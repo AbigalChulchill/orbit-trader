@@ -1,10 +1,12 @@
 package main
 
 import (
-	krakenapi "github.com/beldur/kraken-go-api-client"
-	"os"
 	"fmt"
 	"log"
+	"os"
+
+	"github.com/CalebCress/orbit-trader/coinmonitor/coinapi"
+	krakenapi "github.com/beldur/kraken-go-api-client"
 )
 
 func getEnv(key string) string{
@@ -20,11 +22,13 @@ func getEnv(key string) string{
 func main() {
 	krakenApiKey := getEnv("KRAKEN_API_KEY")
 	krakenSecretKey := getEnv("KRAKEN_SECRET_KEY")
+	coinApiKey := getEnv("COINAPI_KEY")
 
-	api := krakenapi.New(krakenApiKey, krakenSecretKey)
-	balance, err := api.Balance(); if err != nil {
+	krakenApi := krakenapi.New(krakenApiKey, krakenSecretKey)
+	balance, err := krakenApi.Balance(); if err != nil {
 		log.Fatal(err)
 	}
-	
+	api := coinapi.New(coinApiKey)
+	fmt.Println(api.usExchangeRate("BTC"))
 	log.Printf("balance: %v", balance.USDT)
 }
