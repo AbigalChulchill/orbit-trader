@@ -1,1 +1,2 @@
-# orbit-trader
+# Orbit Trader
+Simple crypto trader
