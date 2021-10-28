@@ -18,8 +18,8 @@ type ExchangeRate struct {
 func (s *Client) USExchangeRate(currency string) float64 {
 	client := &http.Client{}
 
-	req, err := http.NewRequest("GET", fmt.Sprintf("%s/v1/exchangerate/USD/%s", BaseURL, currency), nil) 
-	
+	req, err := http.NewRequest("GET", fmt.Sprintf("%s/v1/exchangerate/%s/USD", BaseURL, currency), nil) 
+
 	if err != nil {
 		panic(err)
 	}
@@ -33,7 +33,12 @@ func (s *Client) USExchangeRate(currency string) float64 {
 
 	defer res.Body.Close()
 
+	body, err := ioutil.ReadAll(res.Body)
+	if err != nil {
+		panic(err)
+	}
 
+	fmt.Println(string(body))
 
 	var decoded ExchangeRate
 	if err := json.NewDecoder(res.Body).Decode(&decoded); err != nil {

@@ -1,6 +1,6 @@
 package coinapi
 
-const BaseURL = "https://rest-sandbox.coinapi.io"
+const BaseURL = "https://rest.coinapi.io"
 
 type Client struct {
 	apiKey string

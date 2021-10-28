@@ -1,7 +1,7 @@
 package main
 
 import (
-	"fmt"
+	// "fmt"
 	"log"
 	"encoding/json"
     "io/ioutil"
@@ -41,6 +41,7 @@ func main() {
 		log.Fatal(err)
 	}
 	api := coinapi.New(coinApiKey)
-	fmt.Println(api.USExchangeRate("BTC"))
+	// fmt.Println(api.USExchangeRate("BTC"))
+	api.ApiInfo()
 	log.Printf("balance: %v", balance.USDT)
 }

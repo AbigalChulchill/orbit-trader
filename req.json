@@ -1,0 +1,35 @@
+{
+  "Content-Type": [
+    "application/json; charset=utf-8"
+  ],
+  "Date": [
+    "Thu, 28 Oct 2021 15:40:13 GMT"
+  ],
+  "Vary": [
+    "Accept-Encoding"
+  ],
+  "X-Concurrencylimit-Limit": [
+    "1"
+  ],
+  "X-Concurrencylimit-Remaining": [
+    "1"
+  ],
+  "X-Ratelimit-Limit": [
+    "100"
+  ],
+  "X-Ratelimit-Overage": [
+    "disabled"
+  ],
+  "X-Ratelimit-Remaining": [
+    "95"
+  ],
+  "X-Ratelimit-Request-Cost": [
+    "1"
+  ],
+  "X-Ratelimit-Reset": [
+    "2021-10-29T15:40:13.9448517Z"
+  ],
+  "X-Ratelimit-Used": [
+    "5"
+  ]
+}
