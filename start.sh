@@ -1,1 +1,2 @@
-go run client/main.go
+cd client
+go run main.go

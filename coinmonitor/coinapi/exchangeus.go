@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"net/http"
 	"fmt"
+	"io/ioutil"
 )
 
 type ExchangeRate struct {
@@ -14,12 +15,25 @@ type ExchangeRate struct {
 }
   
 
-func (s *Client) usExchangeRate(currency string) float64 {
-	res, err := http.Get(fmt.Sprintf("%s/v1/exchangerate/USD/%s", BaseURL, s.apiKey)) 
+func (s *Client) USExchangeRate(currency string) float64 {
+	client := &http.Client{}
+
+	req, err := http.NewRequest("GET", fmt.Sprintf("%s/v1/exchangerate/USD/%s", BaseURL, currency), nil) 
+	
 	if err != nil {
 		panic(err)
 	}
+
+	req.Header.Set("X-CoinAPI-Key", s.apiKey)
+
+	res, err := client.Do(req)
+	if err != nil {
+		panic(err)
+	}
+
 	defer res.Body.Close()
+
+
 
 	var decoded ExchangeRate
 	if err := json.NewDecoder(res.Body).Decode(&decoded); err != nil {
